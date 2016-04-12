@@ -17,6 +17,7 @@ go get -u github.com/WindomZ/go-db
 ## TODO
 
 * Usage and demos
+* Support more db
 * More practical functions
 * More Test and Benchmark
 
