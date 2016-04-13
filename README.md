@@ -4,9 +4,7 @@
 
 * Support mongoDB
 * Support PostgreSQL
-* Support Redis
-
-# Getting Started
+* Support Redi
 
 ## Installation
 
@@ -18,7 +16,7 @@ go get -u github.com/WindomZ/go-db
 
 * Usage and demos
 * Support more db
-* More practical functions
+* More useful functions
 * More Test and Benchmark
 
 ## LICENSE
