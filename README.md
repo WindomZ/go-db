@@ -4,7 +4,7 @@
 
 * Support mongoDB
 * Support PostgreSQL
-* Support Redi
+* Support Redis
 
 ## Installation
 
