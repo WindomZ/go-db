@@ -18,6 +18,10 @@ func (db *DB) BeginX(tx *sqlx.Tx) (*Tx, error) {
 	return &Tx{Tx: *tx, isolation: true}, nil
 }
 
+func (tx *Tx) GetTx() *sqlx.Tx {
+	return &tx.Tx
+}
+
 func (tx *Tx) Rollback() error {
 	if tx.isolation {
 		return nil
