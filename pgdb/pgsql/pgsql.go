@@ -4,10 +4,12 @@ import (
 	"fmt"
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
+	"sync"
 )
 
 type DB struct {
 	sqlx.DB
+	txMutex *sync.RWMutex
 }
 
 func NewDB(c *Config) *DB {
@@ -15,7 +17,10 @@ func NewDB(c *Config) *DB {
 	if err != nil {
 		panic(err)
 	}
-	return &DB{*db}
+	return &DB{
+		DB:      *db,
+		txMutex: new(sync.RWMutex),
+	}
 }
 
 func NewDataBase(c *Config) (*sqlx.DB, error) {
