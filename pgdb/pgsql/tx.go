@@ -21,6 +21,11 @@ func (db *DB) BeginX(tx *sqlx.Tx) (*Tx, error) {
 	return &Tx{Tx: *tx, isolation: true}, nil
 }
 
+func (db *DB) WaitTxLock() {
+	db.txMutex.Lock()
+	db.txMutex.Unlock()
+}
+
 func (tx *Tx) GetTx() *sqlx.Tx {
 	return &tx.Tx
 }
