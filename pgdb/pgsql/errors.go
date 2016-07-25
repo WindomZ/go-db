@@ -3,6 +3,11 @@ package pgsql
 import "errors"
 
 var (
-	ERR_NOT_INITED = errors.New("Sql is not initialized!")
-	ERR_NOT_CONFIG = errors.New("Sql is not register!")
+	ErrNotInited error = errors.New("pgsql: Sql is not initialized!")
+	ErrNotConfig       = errors.New("pgsql: Sql is not register!")
+)
+
+var (
+	ErrTxLock   error = errors.New("pgsql: error lock sql tx")
+	ErrTxUnLock       = errors.New("pgsql: error unlock sql tx")
 )

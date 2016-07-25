@@ -4,12 +4,11 @@ import (
 	"fmt"
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
-	"sync"
 )
 
 type DB struct {
 	sqlx.DB
-	txMutex *sync.RWMutex
+	DBMutex
 }
 
 func NewDB(c *Config) *DB {
@@ -18,16 +17,15 @@ func NewDB(c *Config) *DB {
 		panic(err)
 	}
 	return &DB{
-		DB:      *db,
-		txMutex: new(sync.RWMutex),
+		DB: *db,
 	}
 }
 
 func NewDataBase(c *Config) (*sqlx.DB, error) {
 	if c == nil {
-		return nil, ERR_NOT_CONFIG
+		return nil, ErrNotConfig
 	} else if len(c.Username) == 0 {
-		return nil, ERR_NOT_CONFIG
+		return nil, ErrNotConfig
 	}
 	db, err := sqlx.Connect("postgres", getDataSource(c))
 	if err != nil {
