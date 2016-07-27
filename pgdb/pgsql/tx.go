@@ -18,7 +18,7 @@ func (db *DB) BeginX(tx *sqlx.Tx) (*Tx, error) {
 		}
 		return &Tx{Tx: *tx, db: db, isolation: false}, nil
 	}
-	db.txSafeLock()
+	db.txUnsafeLock()
 	return &Tx{Tx: *tx, isolation: true}, nil
 }
 
