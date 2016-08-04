@@ -7,25 +7,25 @@ type DBMutex struct {
 }
 
 func (mux *DBMutex) txMustLock() {
-	mux.txMutex.MustLock()
+	//mux.txMutex.MustLock()
 }
 
 func (mux *DBMutex) txSafeLock() {
-	mux.txMutex.SafeLock()
+	//mux.txMutex.SafeLock()
 }
 
 func (mux *DBMutex) txUnsafeLock() {
-	mux.txMutex.UnsafeLock()
+	//mux.txMutex.UnsafeLock()
 }
 
 func (mux *DBMutex) txMustUnlock() {
-	mux.txMutex.MustUnlock()
+	//mux.txMutex.MustUnlock()
 }
 
 func (mux *DBMutex) txSafeUnlock() {
-	mux.txMutex.SafeUnlock()
+	//mux.txMutex.SafeUnlock()
 }
 
 func (mux *DBMutex) txUnsafeUnlock() {
-	mux.txMutex.UnsafeUnlock()
+	//mux.txMutex.UnsafeUnlock()
 }
