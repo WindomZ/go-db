@@ -1,15 +1,8 @@
 package mgdb
 
 import (
-	"errors"
 	"fmt"
 	"gopkg.in/mgo.v2"
-)
-
-var (
-	ErrNotFound = mgo.ErrNotFound
-	ErrCursor   = mgo.ErrCursor
-	ErrExist    = errors.New("exist")
 )
 
 type DB struct {
@@ -28,9 +21,9 @@ func NewDB(c *Config) *DB {
 
 func NewDataBase(c *Config) (*DB, error) {
 	if c == nil {
-		return nil, ERR_NOT_CONFIG
+		return nil, ErrNoConfig
 	} else if len(c.Host) == 0 {
-		return nil, ERR_NOT_CONFIG
+		return nil, ErrNoConfig
 	}
 	db := &DB{dataBase: c.DBName, config: c}
 	if _, err := db.getSession(); err != nil {

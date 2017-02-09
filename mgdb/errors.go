@@ -1,8 +1,14 @@
 package mgdb
 
-import "errors"
+import (
+	"errors"
+	"gopkg.in/mgo.v2"
+)
 
 var (
-	ERR_NOT_INITED = errors.New("Mongo is not initialized!")
-	ERR_NOT_CONFIG = errors.New("Mongo is not register!")
+	ErrNoInited error = errors.New("Mongo is not initialized!")
+	ErrNoConfig       = errors.New("Mongo is not register!")
+	ErrNotFound       = mgo.ErrNotFound
+	ErrCursor         = mgo.ErrCursor
+	ErrExist          = errors.New("exist")
 )

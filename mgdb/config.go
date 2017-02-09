@@ -13,15 +13,15 @@ func NewConfig(host, port, username, password, dbname string) *Config {
 	return NewFullConfig(host, port, username, password, dbname, 3)
 }
 
-func NewConfigSimple(username, password, dbname string) *Config {
+func NewSimpleConfig(username, password, dbname string) *Config {
 	return NewFullConfig("", "", username, password, dbname, 3)
 }
 
 func NewFullConfig(host, port, username, password, dbname string, open int) *Config {
-	if len(host) == 0 {
+	if host == nil || len(host) == 0 {
 		host = "localhost"
 	}
-	if len(port) == 0 {
+	if port == nil || len(port) == 0 {
 		port = "27017"
 	}
 	return &Config{Host: host, Port: port, Username: username, Password: password, DBName: dbname, MaxOpenConns: open}
