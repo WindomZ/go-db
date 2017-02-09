@@ -18,10 +18,10 @@ func NewSimpleConfig(username, password, dbname string) *Config {
 }
 
 func NewFullConfig(host, port, username, password, dbname string, open int) *Config {
-	if host == nil || len(host) == 0 {
-		host = "localhost"
+	if len(host) == 0 {
+		host = "127.0.0.1"
 	}
-	if port == nil || len(port) == 0 {
+	if len(port) == 0 {
 		port = "27017"
 	}
 	return &Config{Host: host, Port: port, Username: username, Password: password, DBName: dbname, MaxOpenConns: open}
